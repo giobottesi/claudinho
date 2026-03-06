@@ -1,0 +1,17 @@
+# Personal dev profiles (each user creates their own copy from template)
+.github/agents/references/*-profile.md
+.github/agents/references/*-preferences.md
+
+# Examples folder (future use)
+examples/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
