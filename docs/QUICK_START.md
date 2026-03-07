@@ -42,6 +42,40 @@ Add more as you discover:
 
 ---
 
+## Real Example: What It Looks Like
+
+Here's an actual setup session for an infrastructure project:
+
+```
+/setup-agent
+
+Analyzing your answers...
+
+How should Copilot communicate with you?
+→ Zero Polite
+  (Terse, direct answers. Assume full context. No fluff.)
+
+When facing architectural ambiguity, should Copilot ask clarifying questions or infer from context?
+→ Always Ask
+  (Safer, you control decisions)
+
+What breaks often in your infrastructure?
+→ "i dont have enough context"
+  (Honest answer! Agent notes: New to project, skip assumptions.)
+
+What external services/integrations does your infrastructure depend on?
+→ "i dont know what is relevant for now"
+  (Also ok! Agent will ask specific questions as work surfaces.)
+
+How does your team debug infrastructure issues?
+→ "im learning to navigate this project, in others i like old school logs debug"
+  (Key insight: Prefers logs, still learning. Agent will surface logs first.)
+```
+
+**Result**: Agent learns your preferences + adapts immediately. As you discover patterns, run `/setup-agent Update: [...]` to refresh.
+
+---
+
 ## Output
 
 Generates `.github/copilot-instructions.md`  

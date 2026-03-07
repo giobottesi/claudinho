@@ -165,6 +165,44 @@ Examples:
 
 ---
 
+## Real Example: Infrastructure Setup
+
+Here's how it actually looks in chat:
+
+```
+Analyzing your answers...
+
+How should Copilot communicate with you?
+→ Zero Polite
+  (Terse, direct answers. Assume full context. No fluff.)
+
+When facing architectural ambiguity, should Copilot ask clarifying questions or infer from context?
+→ Always Ask
+  (Safer, you control decisions)
+
+What breaks often in your infrastructure?
+→ "i dont have enough context"
+  (Honest answer! Agent notes: New to project, skip assumptions. Ask before suggesting fixes.)
+
+What external services/integrations does your infrastructure depend on?
+→ "i dont know what is relevant for now"
+  (Also ok! Agent will ask specific questions as work surfaces.)
+
+How does your team debug infrastructure issues?
+→ "im learning to navigate this project, in others i like old school logs debug"
+  (Key insight: Prefers log-based debugging, still learning codebase. Agent will reference diagnostics + explain, not assume.)
+```
+
+**Result**: Agent learns:
+- You want direct, no-nonsense communication
+- You prefer to control decisions (always ask before inferring)
+- You're new here—explain context, don't assume deep domain knowledge
+- You like log-based debugging—surface relevant log locations first
+
+**Next**: As you discover patterns, run `/setup-agent Update: found X` to refresh the agent's memory.
+
+---
+
 ## Output: What You Get
 
 Copy-paste ready file: `.github/copilot-instructions.md`

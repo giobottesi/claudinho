@@ -1,21 +1,66 @@
-# claudinho
+# claudinho: A Linter for AI Behavior
 
-**Smart agent setup for GitHub Copilot.** Scan your codebase + answer 5 questions → get a personalized AI assistant that understands your project.
+I just got annoyed. This is built for AI noobs that hardly trust copilot(popularly know as AI late adopters, like me).
 
-> ⚠️ **Early Stage**: claudinho is in active development. The core system works, but features may change. It doesn't touch your actual code files—only creates `.github/` configuration, so you can safely commit for team shareability or keep local for testing.
+I built `claudinho` because I spent too much time re-explaining project logic to a bot that kept forgetting it. It’s a context-layer for your repository that stops the AI from guessing so you can stay in the driver's seat.
 
-## What is this?
-
-Instead of generic Copilot context, `dev-agent` teaches your Copilot:
-- ✅ Your tech stack, file organization, naming patterns
-- ✅ What breaks in your codebase (known gotchas)
-- ✅ External services you depend on
-- ✅ Your debugging style + team jargon
-- ✅ Week-1 onboarding knowledge
-
-**Result**: Faster coding, better suggestions, shared knowledge.
+### TL;DR
+* **The Problem**: AI is great at syntax but fails when applied to _your_ project
+* **The Fix**: A version-controlled `.github/copilot-instructions.md` file.
+* **The Goal**: The AI handles the repetitive execution; the engineer handle the judgment.
+* **The Interface**: Markdown-based, low-friction, and zero infrastructure.
 
 ---
+
+### 📚 Knowledge Index
+* [Why this exists](#-why-i-built-this) - Fact-based logic.
+* [Suggested Uses](#-where-this-actually-helps) - Microservices and Legacy.
+* [No-Gos](#-no-gos) - Practical boundaries.
+* [The Flow](#-the-flow) - 5-minute setup.
+* [Project Logic](#-project-logic) - Core principles.
+
+---
+
+## Why I built this
+I work with legacy codebases since day one + as a meteorologist, I know a generic prediction is usually a wrong one.
+Generic AI models are trained on **public data**, but your business rules and legacy constraints are "private truths" that the AI cannot see.
+
+I wanted a **Behavioral Linter** that respects:
+* **Business Rules**: The specific logic that keeps your production environment alive and thriving.
+* **Pattern Matching**: AI ask before infer, and tailor the solution to your codebase. It helps with less hallucinating based on common (but irrelevant) public patterns.
+* **Communication Style**: You define how you want to be treated: technical brevity, detailed walkthroughs, or "Zero Polite".
+
+**The Base Protocol**: Ask before infer.
+The AI is a specialist tool, you are the engineer. Let it handle the "magic," but you keep the wand.
+
+
+## Project Logic
+* **Standards first**: Follow industry best practices by default; document any deviations.
+* **Density over fluff**: Provide the most context in the fewest tokens.
+* **Human in control**: The AI handles the boring execution while the engineer handles the initial flow and final decision.
+
+---
+
+## Where this actually helps
+* **Legacy Mapping**: Map out "spaghetti" logic so the AI stops suggesting modern patterns that would break a 10-year-old dependency.
+* **Microservice Cognitive Load**: Switching between multiple services with different stacks is a heavy mental tax. claudinho handles the project switching by keeping specific context local to each repo.
+* **OSS Contributions**: Catch the local vibe and naming style of a new repository and start contributing to OpenSource Projects (my goal, actually).
+* **The Rails Trap**: Rails has enough magic of its own—we don't need an AI hallucinating its own version of your `Gemfile` or hidden middleware.
+
+---
+
+## 🚫 No-Gos
+* **No Auto-Pilot**: It won't write your entire feature while you take a nap.
+* **No Hidden Refactors**: It won't change your code unless you give permission and want it. Keep things humanly reviweable.
+* **No "Modern" Sneaking**: It won't suggest new libraries that don't fit your codebase.
+* **No Automatic Commits**: You review and commit everything. You are the filter. (I cant believe people let it do it)
+* **No CSS Wizardry**: It still won't help you center a `div` on the first try (nothing will).
+
+---
+
+## Does it fit?
+* **It fits if**: you want to reduce the repetitive "hand-holding" of AI and value technical precision.
+* **It might not fit if**: you know the tools and is confident enough in AI solutions to let it do its work
 
 ## 5-Minute Quick Start
 
@@ -39,16 +84,7 @@ See [Quick Start](docs/QUICK_START.md) for detailed walkthrough.
 
 ---
 
-## What You Get
-
-### 1. Smart Main Agent
-Development assistant for your full feature lifecycle:
-- Understands your code patterns & conventions
-- Catches mistakes before you commit
-- Suggests refactoring aligned with your style
-- Delegates to specialists as needed
-
-### 2. 5 Included Skills
+### Included Skills (learn more about skills here[link to vs code or github or wahtever])
 
 Each skill is a specialized expert, invoked via `/skill-name`:
 
@@ -59,37 +95,6 @@ Each skill is a specialized expert, invoked via `/skill-name`:
 | `/explain` | Learn systems, deep dives, concepts |
 | `/capture-learning` | Save patterns and insights for reuse |
 | `/brag` | Document work with evidence for portfolios |
-
-### 3. Zero Manual Setup
-
-Code scanning auto-detects:
-- Tech stack (Rails, React, Python, Node, Rust, etc.)
-- File organization (models → services → tests)
-- Naming patterns (Action+Noun vs getXXX)
-- Build commands (npm, bin/rails, cargo, etc.)
-- Main domains (what your system does)
-
-You only answer **5 human questions** that code can't know. See [QUICK_START](docs/QUICK_START.md) for examples.
-
----
-
-## Core Files to Copy
-
-```bash
-cp -r .github/ your-repo/
-```
-
-Then run in VS Code Copilot Chat
-
-```
-/setup-agent 
-```
-
-**Includes**: Main agent, 5 skills, profile templates, and setup template.
-
-See [Installation](docs/INSTALLATION.md#2-copy-to-your-project) for detailed structure.
-
----
 
 ## Documentation
 
@@ -102,81 +107,6 @@ See [Installation](docs/INSTALLATION.md#2-copy-to-your-project) for detailed str
 
 ---
 
-## For New Team Members
-
-Instead of:
-> "Here's our codebase, it has 150 files and some conventions..."
-
-They:
-1. Clone your repo
-2. Run `/setup-agent`
-3. Answer 5 questions (5 min)
-4. **Copilot understands everything**
-
-Productivity: **Week 1 vs Week 3.**
-
----
-
-## How It Works (3 Phases)
-
-### Phase 1: Code Scanning (Automatic)
-Detects tech stack, file org, naming patterns, build commands, main domains from your code.
-
-### Phase 2: 5 Personal Questions (5 min)
-You answer what code can't know: gotchas, integrations, debugging style, jargon, week-1 knowledge.
-
-### Phase 3: Auto-Generate
-Creates `.github/copilot-instructions.md` ready to commit.
-
-See [How It Works](docs/CONCEPTS.md) for detailed walkthrough.
-
----
-
-## Example
-
-Your auto-generated file looks like:
-
-```markdown
-# Copilot Instructions: Your Project
-
-## PROJECT
-Rails payment processing platform with real-time reporting.
-
-**Tech**: Ruby on Rails, React, PostgreSQL, Sidekiq, Redis
-
-## CODE CONVENTIONS
-- Naming: Action+Noun (ProcessPayment, FetchReport)
-- Files: app/models/[domain]/, app/services/[domain]/
-
-## GOTCHAS
-1. N+1 queries → always use .includes()
-2. Race conditions in cache → use pessimistic locks
-3. Webhook timeouts → implement exponential backoff
-
-## INTEGRATIONS
-- Stripe API (100 req/sec, sandbox vs prod keys differ)
-- Datadog (logs + APM, lag of 60 sec)
-
-## DEBUGGING
-Sentry for production errors, Rails logs in dev, print statements for tracing.
-
-## JARGON
-- PCI = Payment Card Industry
-- 3DS = 3D Secure (card verification)
-```
-
----
-
-## For Your Team
-
-### Share with Coworkers
-
-1. Commit `.github/` to your repo
-2. Push to main
-3. New engineers clone repo
-4. Run `/setup-agent`
-5. Done ✅ (5 min onboarding)
-
 ### Update When Things Change
 
 Major tech shifts?
@@ -188,21 +118,10 @@ Only asks for changed answers. Keeps previous answers.
 
 ---
 
-## Why This Works
-
-✨ **Code scanning** — Auto-detects 80% of context  
-✨ **Team-focused** — Solves onboarding, not just individual use  
-✨ **Zero infrastructure** — Just markdown files, works today  
-✨ **Shareable** — Commit to git, use everywhere  
-
-**The insight**: Don't make engineers explain "how our codebase works" again for each AI tool. Learn once, use everywhere.
-
----
-
 ## License
 
 MIT — Use freely, modify as needed, share with your team.
 
 ---
 
-**Built for teams that code together.** 🚀
+**Built for engineers who care about how code is written, not just that it runs.**
