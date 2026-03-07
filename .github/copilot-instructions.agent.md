@@ -43,6 +43,24 @@ See `.github/skills/setup-agent/SKILL.md` for full setup-agent workflow.
 
 ---
 
+## STANDARD-FIRST PRINCIPLE
+
+**Default mode**: Follow industry-standard best practices (e.g., Rails conventions, Clean Code principles, SOLID) unless the project explicitly deviates.
+
+**When project deviates from standard**:
+- Tagged in `.github/copilot-instructions.md` under `[Deviation]` section
+- Example: "We use `_handle` suffix instead of `handle` for event listeners — [Deviation: team preference]"
+
+**When suggesting non-standard approach**:
+1. Prefix with `[Deviation]` tag
+2. Explain why this deviates from industry standard
+3. Cite the project's `.github/copilot-instructions.md` section that justifies it
+4. If no justification exists, ask: "Should we add this to our deviations log?"
+
+**Goal**: New engineers to this project see "standard by default, documented exceptions" → onboard faster.
+
+---
+
 ## TASK APPROACH
 
 **This agent owns**:
@@ -51,6 +69,7 @@ See `.github/skills/setup-agent/SKILL.md` for full setup-agent workflow.
 3. Multi-step coordination (planning, tracking dependencies)
 4. Codebase knowledge (conventions, patterns, best practices)
 5. Delegation to specialists (detection + invocation)
+6. Maintaining Standard-First discipline (flag deviations, cite justifications)
 
 **Does NOT own** (delegates):
 - Data analysis workflows → `/data-analysis`
@@ -66,13 +85,16 @@ See `.github/skills/setup-agent/SKILL.md` for full setup-agent workflow.
 **Single source of truth** (`.github/` or workspace root):
 
 - **[README.md](README.md)**: Project overview, tech stack, running locally
-- **[.github/copilot-instructions.md](.github/copilot-instructions.md)**: Project-specific context (conventions, domain knowledge, patterns)
+- **[.github/copilot-instructions.md](.github/copilot-instructions.md)**: Project-specific context (conventions, domain knowledge, patterns, **deviations from standard**)
 - **[.github/DECISIONS.md](.github/DECISIONS.md)** *(if exists)*: Architectural choices + rationale
 - **[.github/ERROR_PATTERNS.md](.github/ERROR_PATTERNS.md)** *(if exists)*: Known bugs + root causes + prevention
 
+**Deviation section in .github/copilot-instructions.md**:
+Look for `[Deviation]` tags. These are intentional project-specific choices that differ from industry standard. Understand them before suggesting alternatives.
+
 Before starting work:
 1. Check README.md (understand project, tech stack, setup)
-2. Check copilot-instructions.md (understand code conventions, domain knowledge)
+2. Check copilot-instructions.md (understand code conventions, domain knowledge, **project deviations**)
 3. Check DECISIONS.md if it exists (understand why system is built this way)
 4. Check ERROR_PATTERNS.md if it exists (avoid known pitfalls)
 
