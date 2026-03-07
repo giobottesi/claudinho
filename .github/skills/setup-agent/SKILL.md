@@ -45,21 +45,25 @@ The skill scans your repo and detects:
 
 No questions asked—this all happens automatically.
 
-### Phase 2: Interactive Q&A (Light Touch + Iterative)
+### Phase 2: Interactive Q&A (Protocol + Technical Knowledge)
 
-Instead of one heavy questionnaire, you answer questions **as they come up** in chat:
+**Question 1: Response Style Protocol**
+> "How should Copilot communicate with you?"
+> - **Zero Polite**: Terse, direct answers (no fluff, assume context)
+> - **Detailed Walkthroughs**: Step-by-step, explain reasoning, slower-paced
 
-**Category A: Codebase realities** (What code can't see)
-- What breaks regularly + why? (then: how do you prevent it?)
-- What external services/integrations matter? (then: what constraints do they have?)
-- How does your team actually debug? (tools, workflows, patterns)
+This sets the communication norm for ALL future interactions.
 
-**Category B: Agent customization** (How you want to be treated)
-- Response style preference: polite vs direct, verbose vs concise, theoretical vs practical?
-- Code patterns you emphasize or avoid?
-- Communication norms: show working? ask clarifying questions? when to punt?
+**Question 2: Ask-Before-Infer Mandate**
+> "When facing architectural ambiguity, should Copilot ask clarifying questions or try to infer from context?"
+> - **Always ask**: Safer, you control decisions
+> - **Infer when safe**: Faster iteration, ask only on risky decisions and flags assumptions in suggestions.
 
-The skill gathers answers **incrementally**—start with 1-2, add more as issues come up naturally. No requirement to answer everything upfront.
+**Questions 3-5: Technical Deep Dives** (What code can't see)
+- What breaks regularly + why? (Prevention patterns)
+- What external services/integrations matter? (Constraints, SLAs, rate limits)
+- How does your team actually debug? (Tools, workflows, patterns)
+- How your team talks about the system. What are keywords, business terms, abbreviations, acronyms? - it will add to context while you code but initial understanding of those helps with better suggestions and less "stupid questions" from the agent.
 
 ---
 

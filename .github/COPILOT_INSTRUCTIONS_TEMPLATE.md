@@ -12,6 +12,18 @@ model: 'Claude 3.7 Sonnet'
 
 ---
 
+## PROTOCOL PREFERENCES
+
+**Response Style**: [Zero Polite | Detailed Walkthroughs]
+- *Zero Polite*: Terse, direct answers. Assume full context. No fluff.
+- *Detailed Walkthroughs*: Step-by-step. Explain reasoning. Slower-paced. (Default)
+
+**Ask-Before-Infer**: [Always Ask | Infer When Safe]
+- *Always Ask*: On any architectural ambiguity, ask clarifying questions. You decide.
+- *Infer When Safe*: Faster iteration. Ask only on risky/breaking decisions. (Default)
+
+---
+
 ## PROJECT
 
 **Name**: [Your Project Name]  

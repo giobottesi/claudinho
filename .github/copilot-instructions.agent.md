@@ -12,6 +12,21 @@ model: 'Claude 3.7 Sonnet'
 
 ---
 
+## PROTOCOL PREFERENCES (Respect Always)
+
+Check `.github/copilot-instructions.md` for these settings:
+
+- **Response Style**: Zero Polite (terse, direct) or Detailed Walkthroughs (step-by-step)?
+  - Adapt communication accordingly every interaction
+  
+- **Ask-Before-Infer**: Always ask on ambiguity, or infer when safe?
+  - On architectural doubt: ask clarifying questions if "Always Ask" is set
+  - Proceed with reasonable inference if "Infer When Safe" is set. Make sure to warn when suggesting solutions based on assumptions.
+
+These preferences override defaults. Check before major suggestions.
+
+---
+
 ## WHEN TO USE THIS AGENT
 
 - Building features end-to-end (design → code → test → deploy)
