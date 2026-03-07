@@ -30,15 +30,14 @@ model: 'Claude 3.7 Sonnet'
 |---|---|---|
 | Data analysis, SQL queries, trends, cohorts | `/data-analysis` | "Analyze error frequency by module" |
 | Learning new system, deep explanations, papers | `/explain` | "Explain how this caching strategy works" |
-| Capturing insights, patterns, learnings | `/capture-learning` | "Save this pattern for reuse" |
-| Document work, build brag entries | `/brag` | "Build brag doc: finished feature X" |
+| Capturing work, learnings, insights, bragging | `/journal` | "I built feature X" or "I learned pattern Y" |
 | Setup/update your agent context | `/setup-agent` | "Setup my agent" — auto-scans codebase + asks guided Q&A |
 
-See `.github/skills/setup-agent/SKILL.md` for full setup-agent workflow.
+See `.github/skills/journal/SKILL.md` for unified work+learning capture workflow.
 
 **You can also invoke directly**:
-- `/data-analysis` → Slash command in chat
-- `@data-analysis` → Mention in message (auto-invoke)
+- `/journal` → Slash command in chat
+- `@journal` → Mention in message (auto-invoke)
 - Type `@` to see all available agents
 
 ---
@@ -74,7 +73,7 @@ See `.github/skills/setup-agent/SKILL.md` for full setup-agent workflow.
 **Does NOT own** (delegates):
 - Data analysis workflows → `/data-analysis`
 - Learning/explaining → `/explain`
-- Knowledge capture → `/capture-learning`
+- Work + learning capture → `/journal`
 - Product strategy → `@product-vision`
 - Agent optimization → `@agent-improver`
 
